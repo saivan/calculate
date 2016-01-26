@@ -12,6 +12,7 @@ var calculate = {
 
 	// Useful functions
 	tokenize : require('./string/tokenize'),
+	tokensToString : require('./tokens/tokensToString'),
 	functionize : require('./tokens/functionize'),
 	latexify : require('./tokens/tokensToLatex'),
 	stringToFunction : require('./string/toFunction'),
@@ -19,7 +20,10 @@ var calculate = {
 	// Definitions to access constants=
 	Operator : require('./primitive/Operator'),
 	Variable : require('./primitive/Variable'),
-	Constant : require('./primitive/Constant')
+	Constant : require('./primitive/Constant'),
+
+	// Useful utility functions
+	Page : require('./utilities/Page')
 
 }
 
@@ -27,4 +31,7 @@ var calculate = {
  * We attach the library to the users global namespace to allow
  * them to use it in their own scripts.
  */
-window.calculate = calculate
+ 
+window ? 
+	window.calculate = calculate : 
+	module.exports = calculate

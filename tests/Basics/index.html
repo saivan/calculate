@@ -4,14 +4,35 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Tokenisation Check</title>
-		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="testPages.css">
 	</head>
 
 	<body>
+			
+		<div class="header">
+			<h1>Calculate.js</h1>
+		</div>
+
+		<div class="testContainer topContainer">
+			<h2> Basic Test </h2>
+			<p> 
+				If calculate is working correctly, you should be able to 
+				evaluate basic mathematical expressions in the text field below. Feel free
+				to be as lazy as you like, we can take it ;)
+			</p>
+			<div class="divider"></div>
+			<div class="indent">
+				<input type="text" placeholder="Hit me" id="textArea" class="textInput">
+				<input type="submit" value="calculate" id="submitButton">
+				<div class="divider"></div>
+				<div class="indent">
+					<div class="answer" id="resultArea" style="border:3em"></div>
+				</div>
+			</div>
+		</div>
+
 		<script src="../../calculate.js"></script>
 		<script src="basics.js"></script>
-
-		<h1>Calculate Loading</h1>
 
 	</body>
 

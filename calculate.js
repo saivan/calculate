@@ -13,6 +13,7 @@ var calculate = {
 
 	// Useful functions
 	tokenize : require('./string/tokenize'),
+	tokensToString : require('./tokens/tokensToString'),
 	functionize : require('./tokens/functionize'),
 	latexify : require('./tokens/tokensToLatex'),
 	stringToFunction : require('./string/toFunction'),
@@ -20,7 +21,10 @@ var calculate = {
 	// Definitions to access constants=
 	Operator : require('./primitive/Operator'),
 	Variable : require('./primitive/Variable'),
-	Constant : require('./primitive/Constant')
+	Constant : require('./primitive/Constant'),
+
+	// Useful utility functions
+	Page : require('./utilities/Page')
 
 }
 
@@ -28,9 +32,12 @@ var calculate = {
  * We attach the library to the users global namespace to allow
  * them to use it in their own scripts.
  */
-window.calculate = calculate
+ 
+window ? 
+	window.calculate = calculate : 
+	module.exports = calculate
 
-},{"./primitive/Constant":2,"./primitive/Operator":3,"./primitive/Variable":4,"./string/toFunction":7,"./string/tokenize":8,"./tokens/functionize":9,"./tokens/tokensToLatex":10,"./utilities/ArrayExtensions":11}],2:[function(require,module,exports){
+},{"./primitive/Constant":2,"./primitive/Operator":3,"./primitive/Variable":4,"./string/toFunction":7,"./string/tokenize":8,"./tokens/functionize":9,"./tokens/tokensToLatex":10,"./tokens/tokensToString":11,"./utilities/ArrayExtensions":12,"./utilities/Page":13}],2:[function(require,module,exports){
 
 function Constant(name, value, latexString, nativeString){
 	this.name = name;
@@ -205,7 +212,7 @@ function getOperand(string, variables, constants){
 module.exports = getOperand
 
 
-},{"../utilities/stringOperations":12}],6:[function(require,module,exports){
+},{"../utilities/stringOperations":14}],6:[function(require,module,exports){
 
 /**
  * @brief Gets a valid operator from the start of a string
@@ -423,7 +430,7 @@ function stringToTokens(string, operators, variables, constants){
 
 module.exports = stringToTokens;
 
-},{"../primitive/Constant":2,"../primitive/Operator":3,"../primitive/Variable":4,"../string/getOperand":5,"../string/getOperator":6,"../utilities/stringOperations":12}],9:[function(require,module,exports){
+},{"../primitive/Constant":2,"../primitive/Operator":3,"../primitive/Variable":4,"../string/getOperand":5,"../string/getOperator":6,"../utilities/stringOperations":14}],9:[function(require,module,exports){
 
 var defaultOperators = require('../primitive/Operator').defaults
 var defaultConstants = require('../primitive/Constant').defaults
@@ -536,6 +543,34 @@ module.exports = tokensToLatex
 
 },{"../primitive/Constant":2,"../primitive/Operator":3,"../primitive/Variable":4}],11:[function(require,module,exports){
 
+/**
+ * @brief Converts a set of tokens 
+ * 
+ * @param tokens An array of tokens that can be variables, constants, numbers and operators
+ * @return A string that is the direct unpacked version of the token array
+ */
+function tokensToString(tokens, debugging){
+
+	// Construct the string by getting the names of the tokens
+	// add commas inbetween tokens if we are debugging
+	var string = ""
+	for(var i=0; i<tokens.length; i++){
+		string += (tokens[i].name ? tokens[i].name : tokens[i]) 
+		string += debugging ? ", " : ""
+	}
+
+	// Remove the final comma in the case that we were debugging
+	if(debugging && string.length>0){
+		string = string.slice(0, -2)
+	}
+
+	return string
+}
+
+module.exports = tokensToString
+
+},{}],12:[function(require,module,exports){
+
 function extendArray(){
 	Array.prototype.last = function(){return this[this.length-1]}
 	Array.prototype.first = function(){return this[0]}
@@ -544,7 +579,56 @@ function extendArray(){
 
 module.exports = extendArray;
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
+
+/**
+ * @brief Selects the first element matching the css query
+ * 
+ * @param  {query} A css string to select a particular element
+ * @return A HTML Node matching the query
+ */
+function selectFirst(query){
+	return document.querySelector(query)
+}
+
+/**
+ * @brief Selects every element matching the css query
+ * 
+ * @param  {query} A css string to select a particular element
+ * @return An array of HTML nodes matching the query
+ */
+function selectAll(query){
+	return Array.from(document.querySelectorAll(query))
+}
+
+/**
+ * @brief Gets the text from a page item
+ * @details Gets a string from the innerHTML of a HTML node
+ * 
+ * @param  {HTMLNode} The node to extract the insides of
+ * @return The innerHTML of the given node
+ */
+function getText(HTMLNode){
+	return HTMLNode.innerHTML
+}
+
+/**
+ * @brief Puts a string into the html node
+ * @details Replaces the HTML Node's innerHTML with {string}
+ * 
+ * @param {HTMLNode} The node to place the string into
+ * @param {string} The string to add to the node
+ */
+function putText(HTMLNode, string){
+	HTMLNode.innerHTML = string;
+}
+
+module.exports.selectFirst = selectFirst
+module.exports.selectAll = selectAll
+module.exports.getText = getText
+module.exports.putText = putText
+
+},{}],14:[function(require,module,exports){
 
 /**
  * @brief Removes a float from the beginning of a string 

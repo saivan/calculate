@@ -1,0 +1,112 @@
+
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Tokenisation Check</title>
+		<link rel="stylesheet" href="../basics/testPages.css">
+	</head>
+
+	<body>
+			
+		<div class="header">
+			<h1>Calculate.js</h1>
+			<h2>Multivariate Tests</h2>
+			<div class="divider"></div>
+			<p>Here we will run a number of tests on a set of univariate functions. We will be testing for correct tokenisation of valid strings. Aqua backgrounds signify a passed test and red signifies a failed test.</p>
+		</div>
+
+		<!-- First Test -->
+		<div class="testContainer topContainer">
+			<h2> Test One </h2>
+			<p id="input">Input : <span>sinxcosx</span></p>
+			<p id="expected">Expected Output : <span>sin, (, x, ), *, cos, (, x, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Second Test -->
+		<div class="testContainer">
+			<h2> Test Two </h2>
+			<p id="input">Input : <span>sin(x^2-3)cosx</span></p>
+			<p id="expected">Expected Output : <span>sin, (, x, ^, 2, -, 3, ), *, cos, (, x, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Third Test -->
+		<div class="testContainer">
+			<h2> Test Three </h2>
+			<p id="input">Input : <span>5x((4x+3)/4)</span></p>
+			<p id="expected">Expected Output : <span>5, *, x, *, (, (, 4, *, x, +, 3, ), /, 4, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Fourth Test -->
+		<div class="testContainer">
+			<h2> Test Four </h2>
+			<p id="input">Input : <span>(5x+-3)/3</span></p>
+			<p id="expected">Expected Output : <span>(, 5, x, -, 3, ), /, 3</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Fifth Test -->
+		<div class="testContainer">
+			<h2> Test Five </h2>
+			<p id="input">Input : <span>5x((4x+3)/4)</span></p>
+			<p id="expected">Expected Output : <span>5, *, x, *, (, (, 4, *, x, +, 3, ), /, 4, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Sixth Test -->
+		<div class="testContainer">
+			<h2> Test Six </h2>
+			<p id="input">Input : <span>sinx/cosx</span></p>
+			<p id="expected">Expected Output : <span>sin, (, x, ), /, cos, (, x, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+		
+		<!-- Seventh Test -->
+		<div class="testContainer">
+			<h2> Test Seven </h2>
+			<p id="input">Input : <span>-cos(x)</span></p>
+			<p id="expected">Expected Output : <span>-, cos, (, x, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+		
+		<!-- Eighth Test -->
+		<div class="testContainer">
+			<h2> Test Eight </h2>
+			<p id="input">Input : <span>-3/-2</span></p>
+			<p id="expected">Expected Output : <span>-3, /, -2</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+		
+		<!-- Ninth Test -->
+		<div class="testContainer">
+			<h2> Test Nine </h2>
+			<p id="input">Input : <span>-3*-(4)</span></p>
+			<p id="expected">Expected Output : <span>-3, *, -, (, 4, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Tenth Test -->
+		<div class="testContainer">
+			<h2> Test Ten </h2>
+			<p id="input">Input : <span>-3(-x+4)</span></p>
+			<p id="expected">Expected Output : <span>-3, *, (, -, x, +, 4, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<!-- Eleventh Test -->
+		<div class="testContainer">
+			<h2> Test Eleven </h2>
+			<p id="input">Input : <span>4cos(x-3pi/2)</span></p>
+			<p id="expected">Expected Output : <span>4, *, cos, (, x, -, 3, *, pi, /, 2, )</span></p>
+			<p id="result">Program Output : <span></span></p>
+		</div>
+
+		<script src="../../calculate.js"></script>
+		<script src="tests.js"></script>
+
+	</body>
+
+</html>

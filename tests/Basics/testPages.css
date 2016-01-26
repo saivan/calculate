@@ -1,0 +1,113 @@
+
+html{
+	background-color: #f2f2ee;
+	overflow: scroll;
+}
+
+body{
+	margin: 0;
+}
+
+/**
+ * Styling the header
+ */
+
+h1{
+	font-family: Georgia;
+	font-size: 4em;
+	color: #cf5142;
+}
+
+.header{
+	/* Positioning */
+	padding: 4% 8% 2% 8%;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 5;
+
+	/* Sizing and coloring */
+	background-color: #ffd86d;
+	width: 100%;
+	min-height: 20%;
+	margin: 0;
+	box-shadow: 3px;
+
+	/* Centering the text */
+	line-height: 0%;
+	display: inline-block;
+}
+
+/**
+ * Styling the testing containers
+ */
+
+h2{
+	font-size: 2.5em;
+	color: inherit;
+}
+
+p{
+	font-family: Din;
+	color: #30337a;
+	font-size: 1.2em;
+	width: 70%;
+	line-height: 100%;
+}
+
+.testContainer{
+	color: #8a381e;
+	font-family: Din;
+	position: relative;
+	padding: 2%;
+	padding-left: 8%;
+	padding-right: 18%;
+	margin-top: 2%;
+	background-color: #ffb3ba;
+	min-height: 20%;
+}
+
+.topContainer{
+	margin-top: 20%;
+}
+
+.divider{
+	height: 4%;
+}
+
+.indent{
+	width: 95%;
+	margin-left: 3%;
+}
+
+/**
+ * Styling user input areas
+ */
+
+input {
+    border: 5px solid white;  
+    padding: 1em;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+    color: #999;
+}
+
+.textInput{
+	color: black;
+	width: 40%;
+	padding-left: 3%;
+}
+
+/**
+ * Styling a passed or a failed test
+ */
+
+.passed{
+	color: #b3dadd;
+	background-color: #6cb7be;
+}
+
+.failed{
+	color: #8a381e;
+	background-color: #ffb3ba;
+}

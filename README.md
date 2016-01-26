@@ -5,5 +5,7 @@ A javascript library that attempts to understand human mathematics, in order to 
 
 ## Usage
 Just place the calculate.js file somewhere in your repository and invoke it with:
-''' <script src="<PATH TO>/calculate.js"></script>'''
+``` html 
+<script src="<PATH TO>/calculate.js"></script>
+```
 
