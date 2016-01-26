@@ -28,7 +28,6 @@ var expectedOutputs =
 		.map(Page.getText)
 
 var passedTests = expectedOutputs.map(function(output, i){
-	console.log(output, testResults[i])
 	return output === testResults[i]
 })
 
@@ -37,4 +36,3 @@ var testContainers = Page.selectAll(".testContainer");
 passedTests.forEach(function(passed, i){
 	testContainers[i].className += passed ? " passed" : " failed"
 })
-
