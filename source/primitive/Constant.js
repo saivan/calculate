@@ -2,7 +2,7 @@
 function Constant(name, value, latexString, nativeString){
 	this.name = name;
 	this.value = value;
-	this.latexString = latexString===undefined ? name : latexString;
+	this.latexString = latexString == null ? name : latexString;
 	this.nativeString = nativeString;
 }
 

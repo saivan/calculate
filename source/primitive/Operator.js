@@ -1,11 +1,11 @@
 
 /**
  * @brief A class to encode a mathematical operator
- * @details An operator can be considered a function 
- * 
+ * @details An operator can be considered a function
+ *
  * @param {string} The string representation of the operator
  * @param {precedence} An arbitrary integer that specifies the operator
- * 		precedence, higher precedence requires a higher integer
+ * 		precedence, higher precedence requires a smaller integer
  * @param {operation} A javascript representation of the function
  * 		for function evaluation and building.
  * @param {latexString} A latex representation of the operation
@@ -29,7 +29,7 @@ Operator.prototype.singleInput = function(){
  * A set of default operators
  */
 var operators = [
-	new Operator("(", 1, "(", "{\\left({ "), 
+	new Operator("(", 1, "(", "{\\left({ "),
 	new Operator(")", 1, ")", "}\\right)} "),
 	new Operator("+", 2, "+", "}+{"),
 	new Operator("-", 2, "-", "}-{"),
@@ -47,7 +47,7 @@ var operators = [
 ];
 
 /**
- * Defining all of the constants required by the 
+ * Defining all of the constants required by the
  */
 module.exports.OPEN_BRACKET = operators[0];
 module.exports.CLOSE_BRACKET = operators[1];
